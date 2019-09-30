@@ -1,6 +1,10 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /*Format*/
+    background-color: #273057;
+    color: #ff6f61;
+    /*Format*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +25,57 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.shadowed-danger:hover{
+    background-color: #f2dede;
+}
+.shadowed-success:hover{
+    background-color: #dff0d8;
+}
+.shadowed-warning:hover
+{
+    background-color: #fcf8e3;
+}
+
+small
+{
+    color: #A9A9A9;
+}
+
+tr {
+    /*Format*/
+    background-color: #273057;
+    /*Format*/
+}
+
+td a{
+    display: block;
+    text-decoration: none;    
+    /*Format*/
+    /*color: black;*/
+    color: #a79b82;
+    background-color: #273057;
+    /*Format*/
+}
+
+td a:hover
+{
+    text-decoration:none;
+    /*Format*/
+    /*color: black;*/
+    color: #a79b82;
+    /*Format*/
+}
+
+.panel{
+    background-color: #273057;
+}
+
+.dragelement{
+
+}
+
+.dropelement{
+
 }

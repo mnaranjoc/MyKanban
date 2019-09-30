@@ -1,0 +1,108 @@
+﻿@model IEnumerable<MyKanban.Models.KanbanItem>
+
+@{
+    ViewBag.Title = "Items";
+}
+
+<h2>Items</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="panel">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <h4 class="dropelement" draggable="true">To do (@ViewBag.TodoCounter)</h4>
+            </div>
+            <!-- Table -->
+            <table class="table">
+                @foreach (var item in (IEnumerable<MyKanban.Models.KanbanItem>)ViewBag.Todo)
+                {
+                    <tr>
+                        <td>
+                            <a href="/KanbanItems/Details/@item.ID" class="dragelement" draggable="true">
+                                @if (item.Critical == true)
+                                {
+                                    <b>@item.shortDescription()</b>
+
+                                }
+                                else
+                                {
+                                    @item.shortDescription()
+                                }
+                                <br />
+                                <small> (@item.daysElapsed())</small>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="panel">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <h4>In process (@ViewBag.InProcessCounter)</h4>
+            </div>
+            <!-- Table -->
+            <table class="table">
+                @foreach (var item in (IEnumerable<MyKanban.Models.KanbanItem>)ViewBag.InProcess)
+                {
+                    <tr>
+                        <td>
+                            <a href="/KanbanItems/Details/@item.ID">
+                                @if (item.Critical == true)
+                                {
+                                    <b>@item.shortDescription()</b>
+
+                                }
+                                else
+                                {
+                                    @item.shortDescription()
+                                }
+                                <br />
+                                <small> (@item.daysElapsed())</small>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-4" style="padding-right:0;">
+        <div class="panel">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <h4>Done (@ViewBag.DoneCounter)</h4>
+            </div>
+            <!-- Table -->
+            <table class="table">
+                @foreach (var item in (IEnumerable<MyKanban.Models.KanbanItem>)ViewBag.Done)
+                {
+                    <tr>
+                        <td>
+                            <a href="/KanbanItems/Details/@item.ID">
+                                @if (item.Critical == true)
+                                {
+                                    <b>@item.shortDescription()</b>
+
+                                }
+                                else
+                                {
+                                    @item.shortDescription()
+                                }
+                                <br />
+                                <small> (@item.daysElapsed())</small>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
