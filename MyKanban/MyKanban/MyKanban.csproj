@@ -169,12 +169,16 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KanbanBoardsController.cs" />
+    <Compile Include="Controllers\KanbanItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\KanbanBoard.cs" />
+    <Compile Include="Models\KanbanItem.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -234,6 +238,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\KanbanBoards\Create.cshtml" />
+    <Content Include="Views\KanbanBoards\Delete.cshtml" />
+    <Content Include="Views\KanbanBoards\Details.cshtml" />
+    <Content Include="Views\KanbanBoards\Edit.cshtml" />
+    <Content Include="Views\KanbanBoards\Index.cshtml" />
+    <Content Include="Views\KanbanItems\Create.cshtml" />
+    <Content Include="Views\KanbanItems\Delete.cshtml" />
+    <Content Include="Views\KanbanItems\Details.cshtml" />
+    <Content Include="Views\KanbanItems\Edit.cshtml" />
+    <Content Include="Views\KanbanItems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

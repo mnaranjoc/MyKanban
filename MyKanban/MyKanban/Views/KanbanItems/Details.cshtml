@@ -1,0 +1,58 @@
+﻿@model MyKanban.Models.KanbanItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>KanbanItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Board.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Board.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ColumnID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ColumnID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Critical)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Critical)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

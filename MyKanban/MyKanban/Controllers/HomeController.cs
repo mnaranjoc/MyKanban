@@ -10,7 +10,8 @@ namespace MyKanban.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            //return View();
+            return RedirectToAction("Index", "KanbanBoards");
         }
 
         public ActionResult About()

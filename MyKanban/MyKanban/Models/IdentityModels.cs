@@ -29,5 +29,9 @@ namespace MyKanban.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MyKanban.Models.KanbanBoard> KanbanBoards { get; set; }
+
+        public System.Data.Entity.DbSet<MyKanban.Models.KanbanItem> KanbanItems { get; set; }
     }
 }
