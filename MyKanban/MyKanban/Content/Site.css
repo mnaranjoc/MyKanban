@@ -50,7 +50,7 @@ tr {
 }
 
 td a{
-    display: block;
+    display: unset;
     text-decoration: none;    
     /*Format*/
     /*color: black;*/
@@ -70,12 +70,4 @@ td a:hover
 
 .panel{
     background-color: #273057;
-}
-
-.dragelement{
-
-}
-
-.dropelement{
-
 }

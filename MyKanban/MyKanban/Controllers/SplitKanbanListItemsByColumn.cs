@@ -6,16 +6,24 @@ namespace MyKanban.Controllers
 {
     public class SplitKanbanListItemsByColumn
     {
-        public List<KanbanItem> toDo, inProcess, done;
         IEnumerable<KanbanItem> items = Enumerable.Empty<KanbanItem>();
+        public List<KanbanItem> toDo, inProcess, done;
+        ApplicationDbContext db = new ApplicationDbContext();
+        public string boardName;
         int board;
 
-        public SplitKanbanListItemsByColumn(IEnumerable<KanbanItem> items, int board)
+        public SplitKanbanListItemsByColumn(int? board)
         {
+            int boardId = (board == null) ? 0 : (int)board;
+
+            var items = db.KanbanItems.Where(x => x.BoardID == boardId).ToList();
+
             this.items = items;
-            this.board = board;
+            this.board = boardId;
 
             split();
+
+            boardName = db.KanbanBoards.Where(x => x.ID == boardId).ToList().FirstOrDefault().Description;
         }
 
         private void split()

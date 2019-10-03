@@ -16,20 +16,15 @@ namespace MyKanban.Controllers
 
         public ActionResult Items(int? id)
         {
-            var items = db.KanbanItems.Where(x => x.BoardID == id).ToList();
-
-            SplitKanbanListItemsByColumn listHelper = new SplitKanbanListItemsByColumn(items,
-                                                                                       (id == null) ? 0 : (int)id);
+            SplitKanbanListItemsByColumn listHelper = new SplitKanbanListItemsByColumn(id);
             
             ViewBag.Todo = listHelper.toDo;
             ViewBag.InProcess = listHelper.inProcess;
             ViewBag.Done = listHelper.done;
-
             ViewBag.TodoCounter = listHelper.toDo.Count();
             ViewBag.InProcessCounter = listHelper.inProcess.Count();
             ViewBag.DoneCounter = listHelper.done.Count();
-
-            ViewBag.BoardName = db.KanbanBoards.Where(x => x.ID == id).ToList().FirstOrDefault().Description;
+            ViewBag.BoardName = listHelper.boardName;
 
             return View();
         }
