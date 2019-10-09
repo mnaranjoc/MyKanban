@@ -32,7 +32,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Board.Description)
+            <a href="/KanbanBoards/Items/@item.Board.ID" class="dragelement" draggable="true">
+                @Html.DisplayFor(modelItem => item.Board.Description)
+            </a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
