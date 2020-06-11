@@ -23,7 +23,12 @@ namespace MyKanban.Controllers
 
             split();
 
-            boardName = db.KanbanBoards.Where(x => x.ID == boardId).ToList().FirstOrDefault().Description;
+            var boards = db.KanbanBoards.Where(x => x.ID == boardId).ToList();
+
+            if (boards != null && boards.Count > 0)
+            {
+                boardName = boards.FirstOrDefault().Description;
+            }
         }
 
         private void split()
