@@ -1,0 +1,29 @@
+﻿@model MyKanbanCore.Models.Board
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 class="d-inline">@Html.DisplayFor(model => model.Name)</h2>
+<a class="d-inline" asp-action="Index" asp-controller="Columns" asp-route-id="@Model.BoardId"> (Manage columns)</a>
+<hr />
+
+<div class="row">
+    @foreach (Column column in Model.Columns)
+    {
+        <div class="col">
+            <h5 class="d-inline">@column.Description</h5>
+            <a class="d-inline" asp-action="Create" asp-controller="Items" asp-route-id="@column.ColumnId" style="visibility: hidden"> (create item)</a>
+            <ul id="@string.Format("sortable{0}", column.ColumnId)" class="connectedSortable" data-id="@column.ColumnId">
+                @foreach (Item item in column.Items)
+                {
+                    <li data-id="@item.ItemId">@item.Description + @item.Position</li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/js/boarditems.js"></script>
+}
