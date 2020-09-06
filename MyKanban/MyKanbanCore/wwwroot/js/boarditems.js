@@ -6,16 +6,10 @@
             connectWith: ".connectedSortable",
             dropOnEmpty: true,
             stop: function (event, ui) {
-                var moved = ui.item,
-                    replaced = ui.item.prev();
-
-                // if replaced.length === 0 then the item has been pushed to the top of the list
-                // in this case we need the .next() sibling
-                if (replaced.length == 0) {
-                    replaced = ui.item.next();
-                }
-
-                alert("moved ID:" + moved.attr("data-id") + "replaced ID:" + replaced.attr("data-id"));
+                var itemId = Number(ui.item.attr("data-itemId"));
+                var columnId = Number(ui.item.parent().attr("data-columnId"));
+                var positionId = Number(ui.item.index());
+                updateItem(itemId, columnId, positionId);
             }
         }).disableSelection();
     });
@@ -30,26 +24,21 @@
             col.children("a").css("visibility", "hidden");
         });
     });
-
-    //// Update column position
-    //$("li").each(function () {
-    //    $(this).mouseup(function () {
-    //        ajaxCall1($(this));
-    //    });
-    //});
 });
 
-function ajaxCall1(li) {
+function updateItem(itemId, newColumn, newPosition) {
     $.ajax({
-        url: "../../api/kanbanitems/" + li.attr("data-id"),
+        url: "../../api/kanbanitems/" + itemId,
         type: "GET",
         success: function (data) {
-            ajaxCall2(li, data);
+            data.columnId = newColumn;
+            data.position = newPosition;
+            put(data);
         }
     });
 }
-function ajaxCall2(li, data) {
-    data.columnId = Number(li.parent().attr("data-id"));
+
+function put(data) {
     $.ajax({
         url: "../../api/kanbanitems/" + data.itemId,
         type: "PUT",

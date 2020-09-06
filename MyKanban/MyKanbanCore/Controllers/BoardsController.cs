@@ -33,8 +33,7 @@ namespace MyKanbanCore.Controllers
             }
 
             var board = await _context.Board
-                .Include(s => s.Columns)
-                .ThenInclude(s => s.Items)
+                .Include(s => s.Columns).ThenInclude(s => s.Items)
                 .FirstOrDefaultAsync(m => m.BoardId == id);
             if (board == null)
             {

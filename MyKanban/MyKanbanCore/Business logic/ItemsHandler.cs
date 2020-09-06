@@ -31,5 +31,53 @@ namespace MyKanbanCore.Business_logic
                 item.Position = nextOrderNo.Position + 1;
             }
         }
+
+        public void updatePositions(Item updatedItem, Item origItem)
+        {
+            // Get the items count
+            var itemsQty = context.Item
+                .Where(s => s.BoardId == updatedItem.BoardId)
+                .Where(s => s.ColumnId == updatedItem.ColumnId)
+                .Count();
+
+            if (origItem.ColumnId != updatedItem.ColumnId)
+            {
+                itemsQty++;
+            }
+
+            int?[] itemsArray = new int?[itemsQty];
+            itemsArray[updatedItem.Position] = updatedItem.ItemId;
+            int posi = 0;
+
+            // Get the items (except the updating)
+            var items = context.Item
+                .AsNoTracking()
+                .Where(s => s.BoardId == updatedItem.BoardId)
+                .Where(s => s.ColumnId == updatedItem.ColumnId)
+                .Where(s => s.ItemId != updatedItem.ItemId)
+                .OrderBy(s => s.Position);
+            foreach(var item in items)
+            {
+                if (itemsArray[posi] != null)
+                {
+                    posi++;
+                }
+                    
+                itemsArray[posi] = item.ItemId;
+                posi++;
+            }
+
+            // Finally update all positions
+            for(int i=0; i<itemsArray.Length; i++)
+            {
+                var item = context.Item.Find(itemsArray[i]);
+                if (item != null && item.Position != i)
+                {
+                    item.Position = i;
+                    context.Update(item);
+                    context.SaveChanges();
+                }
+            }
+        }
     }
 }

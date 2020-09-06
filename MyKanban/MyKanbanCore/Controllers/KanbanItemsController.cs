@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyKanbanCore.Business_logic;
 using MyKanbanCore.Data;
 using MyKanbanCore.Models;
 namespace MyKanbanCore.Controllers
@@ -51,10 +52,15 @@ namespace MyKanbanCore.Controllers
                 return BadRequest();
             }
 
+            var origItem = _context.Item.AsNoTracking().Where(s => s.ItemId == item.ItemId).FirstOrDefault();
             _context.Entry(item).State = EntityState.Modified;
 
             try
             {
+                if ((item.ColumnId != origItem.ColumnId) || (item.Position != origItem.Position))
+                {
+                    new ItemsHandler(_context).updatePositions(item, origItem);
+                }
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
