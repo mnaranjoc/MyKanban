@@ -14,10 +14,10 @@
         <div class="col">
             <h5 class="d-inline">@column.Description</h5>
             <a class="d-inline" asp-action="Create" asp-controller="Items" asp-route-id="@column.ColumnId" style="visibility: hidden"> (create item)</a>
-            <ul id="@string.Format("sortable{0}", column.ColumnId)" class="connectedSortable" data-columnId="@column.ColumnId">
+            <ul id="@string.Format("sortable{0}", column.ColumnId)" class="connectedSortable kanbanColumn" data-columnId="@column.ColumnId">
                 @foreach (Item item in column.Items.OrderBy(s => s.Position))
                 {
-                    <li data-itemId="@item.ItemId">@item.Description</li>
+                    <li class="kanbanItem" data-itemId="@item.ItemId">@item.Description</li>
                 }
             </ul>
         </div>

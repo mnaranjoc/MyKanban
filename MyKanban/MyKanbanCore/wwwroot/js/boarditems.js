@@ -46,7 +46,7 @@ function put(data) {
         dataType: "json",
         data: JSON.stringify(data),
         success: function (result) {
-            alert("updated");
+            //alert("updated");
         },
         error: function (passParams) {
             console.log("Error is " + passParams);

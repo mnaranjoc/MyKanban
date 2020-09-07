@@ -73,3 +73,16 @@ body {
 .connectedSortable {
     min-height: 100vh;
 }
+
+.kanbanItem {
+    background-color: #fbfbfb;
+    list-style-type: none;
+    padding: .5rem;
+    border: solid;
+    border-width: 1px;
+    margin: 2px;
+}
+
+.kanbanColumn {
+    padding: 0;
+}
