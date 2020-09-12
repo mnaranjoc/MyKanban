@@ -74,7 +74,7 @@ namespace MyKanbanCore
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Boards}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
