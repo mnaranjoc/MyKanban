@@ -86,3 +86,35 @@ body {
 .kanbanColumn {
     padding: 0;
 }
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+    padding-top: 70px;
+}
+
+    .sidenav a {
+        padding: 6px 6px 6px 32px;
+        /*text-decoration: none;*/
+        /*font-size: 25px;*/
+        color: #818181;
+        display: block;
+    }
+
+        .sidenav a:hover {
+            color: #212529;
+        }
+
+.main {
+    margin-left: 200px; /* Same as the width of the sidenav */
+}
+
+.navbar{
+    z-index: 5;
+}

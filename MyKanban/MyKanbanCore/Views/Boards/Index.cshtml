@@ -4,40 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Boards</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<div class="card-columns">
+<div class="sidenav">
     @foreach (var item in Model)
     {
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">@item.Name</h5>
-                <p class="card-text">@item.Description</p>
-                <p id="button-section" class="card-text text-right" style="visibility: hidden">
-                    <a asp-action="Details" asp-route-id="@item.BoardId" class="text-dark"><i class="fa fa-eye"></i></a>
-                    <a asp-action="Edit" asp-route-id="@item.BoardId" class="text-dark"><i class="fa fa-pencil"></i></a>
-                    <a asp-action="Delete" asp-route-id="@item.BoardId" class="text-dark"><i class="fa fa-trash"></i></a>
-                </p>
-            </div>
-        </div>
+        <a asp-action="Details" asp-route-id="@item.BoardId">@item.Name</a>
     }
+    <hr />
+    <a asp-action="Create">Create New</a>
 </div>
 
-@section Scripts{
-    <script>
-        $("document").ready(function () {
-            $(".card").each(function () {
-                var card = $(this);
-                card.mouseenter(function () {
-                    card.children(".card-body").children("#button-section").css("visibility", "visible");
-                });
-                card.mouseleave(function () {
-                    card.children(".card-body").children("#button-section").css("visibility", "hidden");
-                });
-            });
-        });
-    </script>
-}
+<div class="main">
+    <h2>Please select a board</h2>
+    <p><i class="fa fa-arrow-left"></i> Select or create a board to begin...</p>
+</div>

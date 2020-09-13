@@ -40,6 +40,7 @@ namespace MyKanbanCore.Controllers
                 return NotFound();
             }
 
+            ViewBag.Boards = await _context.Board.ToListAsync();
             return View(board);
         }
 
